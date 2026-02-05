@@ -1,4 +1,5 @@
 // Microsoft Visual C++ generated resource script.
+// MODIFIED FOR LANDESK - LANSOFT
 //
 #pragma code_page(65001)
 #include "resource.h"
@@ -89,13 +90,13 @@ BEGIN
     BEGIN
         BLOCK "040904e4"
         BEGIN
-            VALUE "CompanyName", "Purslane Ltd" "\0"
-            VALUE "FileDescription", "RustDesk Remote Desktop" "\0"
+            VALUE "CompanyName", "Lansoft" "\0"
+            VALUE "FileDescription", "LanDesk Remote Desktop" "\0"
             VALUE "FileVersion", VERSION_AS_STRING "\0"
-            VALUE "InternalName", "rustdesk" "\0"
-            VALUE "LegalCopyright", "Copyright © 2025 Purslane Ltd. All rights reserved." "\0"
-            VALUE "OriginalFilename", "rustdesk.exe" "\0"
-            VALUE "ProductName", "RustDesk" "\0"
+            VALUE "InternalName", "landesk" "\0"
+            VALUE "LegalCopyright", "Copyright © 2025 Lansoft. All rights reserved." "\0"
+            VALUE "OriginalFilename", "landesk.exe" "\0"
+            VALUE "ProductName", "LanDesk" "\0"
             VALUE "ProductVersion", VERSION_AS_STRING "\0"
         END
     END
