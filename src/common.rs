@@ -122,6 +122,18 @@ impl Drop for SimpleCallOnReturn {
 }
 
 pub fn global_init() -> bool {
+    // === LANDESK CUSTOM BRANDING ===
+    // Set custom app name
+    *config::APP_NAME.write().unwrap() = "LanDesk".to_owned();
+    
+    // Set custom rendezvous server from environment variable if available
+    if let Some(server) = option_env!("RENDEZVOUS_SERVER") {
+        if !server.is_empty() {
+            *config::PROD_RENDEZVOUS_SERVER.write().unwrap() = server.to_owned();
+        }
+    }
+    // === END LANDESK CUSTOMIZATION ===
+    
     #[cfg(target_os = "linux")]
     {
         if !crate::platform::linux::is_x11() {
