@@ -1050,6 +1050,9 @@ pub fn get_custom_rendezvous_server(custom: String) -> String {
     if !custom.is_empty() {
         return custom;
     }
+    if let Some(s) = option_env!("RENDEZVOUS_SERVER") {
+        return s.to_owned();
+    }
     if !config::PROD_RENDEZVOUS_SERVER.read().unwrap().is_empty() {
         return config::PROD_RENDEZVOUS_SERVER.read().unwrap().clone();
     }
@@ -1092,6 +1095,9 @@ fn get_api_server_(api: String, custom: String) -> String {
         } else {
             return format!("http://{}", s);
         }
+    }
+    if let Some(s) = option_env!("API_SERVER") {
+        return s.to_owned();
     }
     "https://admin.rustdesk.com".to_owned()
 }
