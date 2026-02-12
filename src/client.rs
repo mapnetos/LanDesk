@@ -759,7 +759,7 @@ impl Client {
         conn: &mut Stream,
     ) -> ResultType<Option<Vec<u8>>> {
         let rs_pk = get_rs_pk(if key.is_empty() {
-            config::RS_PUB_KEY
+            option_env!("RS_PUB_KEY").unwrap_or(config::RS_PUB_KEY)
         } else {
             key
         });
@@ -1790,7 +1790,11 @@ impl LoginConfigHandler {
             let server = server_key.next().unwrap_or_default();
             let args = server_key.next().unwrap_or_default();
             let key = if server == PUBLIC_SERVER {
-                config::RS_PUB_KEY.to_owned()
+                if let Some(k) = option_env!("RS_PUB_KEY") {
+                    k.to_owned()
+                } else {
+                    config::RS_PUB_KEY.to_owned()
+                }
             } else {
                 let mut args_map: HashMap<String, &str> = HashMap::new();
                 for arg in args.split('&') {
